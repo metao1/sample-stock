@@ -61,16 +61,20 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.CustomViewHold
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView faceTextView;
+        private final TextView faceTextView, priceTextView;
 
         CustomViewHolder(View itemView) {
             super(itemView);
-            faceTextView = (TextView) itemView.findViewById(R.id.face);
+            faceTextView = (TextView) itemView.findViewById(R.id.face_text_view);
+            priceTextView = (TextView) itemView.findViewById(R.id.price_text_view);
         }
 
         void bind(Item item) {
             if (faceTextView != null) {
                 faceTextView.setText(item.getFace());
+            }
+            if (priceTextView != null) {
+                priceTextView.setText(String.format("$%s", String.valueOf(item.getPrice())));
             }
         }
     }
