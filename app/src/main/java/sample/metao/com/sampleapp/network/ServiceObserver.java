@@ -17,6 +17,7 @@ public class ServiceObserver {
     private NetworkManager networkManager;
     private UIHandler uiHandler;
     private String endPointAddress;
+    private static int itemsToLoad;
 
     public ServiceObserver(ServiceObserverListener serviceObserverListener) {
         this.serviceObserverListener = serviceObserverListener;
@@ -73,8 +74,12 @@ public class ServiceObserver {
         }
     }
 
-    public void loadMore(int itemsToLoad) {
-        params.put("limit", String.valueOf(itemsToLoad));
+    public void loadMore(int load) {
+        if (load > 0) {
+            this.itemsToLoad += load;
+            params.put("skip", String.valueOf(itemsToLoad));
+        }
+        params.put("limit", "3");
         startToLoad();
     }
 
