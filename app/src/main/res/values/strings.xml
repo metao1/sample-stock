@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SampleApp</string>
+    <string name="buy_now">BUY NOW!</string>
+    <string name="only_in_stock">Only In Stock</string>
+    <string name="not_only_in_stock">All Items</string>
+    <string name="search">Search</string>
+</resources>
