@@ -9,7 +9,9 @@ import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import sample.metao.com.sampleapp.R;
@@ -38,6 +40,7 @@ public class SampleActivity extends AppCompatActivity implements CompoundButton.
     private OnLoadMoreListener loadMoreHandler;
     private ToggleButton onlyInStockToggle;
     private RecyclerViewLoadManager recyclerViewLoadManager;
+    private ProgressBar progressbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class SampleActivity extends AppCompatActivity implements CompoundButton.
         items = new ArrayList<>();
         loadMoreHandler = new LoadMoreHandler();
         recycleView = (RecyclerView) findViewById(R.id.recycle_view);
+        progressbar = (ProgressBar) findViewById(R.id.progress_bar);
         onlyInStockToggle = (ToggleButton) findViewById(R.id.only_in_stock_toggle);
         onlyInStockToggle.setOnCheckedChangeListener(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
@@ -80,6 +84,7 @@ public class SampleActivity extends AppCompatActivity implements CompoundButton.
 
         @Override
         public void onLoadMore() {
+            progressbar.setVisibility(View.VISIBLE);
             serviceObserver.loadMore(3);
         }
     }
@@ -87,6 +92,7 @@ public class SampleActivity extends AppCompatActivity implements CompoundButton.
     @Override
     protected void onResume() {
         super.onResume();
+        progressbar.setVisibility(View.VISIBLE);
         if (serviceObserver == null) {
             serviceObserver = new ServiceObserver(new ServiceObserverHandler());
         }
@@ -144,6 +150,7 @@ public class SampleActivity extends AppCompatActivity implements CompoundButton.
         public void onFinished(String result) {
             //Log.d(TAG, result);
             recyclerViewLoadManager.setLoading(false);
+            progressbar.setVisibility(View.GONE);
         }
     }
 

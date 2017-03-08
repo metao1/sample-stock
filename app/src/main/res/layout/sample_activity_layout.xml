@@ -12,7 +12,17 @@
             android:id="@+id/only_in_stock_toggle"/>
     <android.support.v7.widget.RecyclerView
             android:id="@+id/recycle_view"
+            android:layout_weight="10"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp">
     </android.support.v7.widget.RecyclerView>
+    <ProgressBar
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_gravity="center_horizontal"
+            style="@android:style/Widget.Holo.ProgressBar"
+            android:id="@+id/progress_bar"/>
 </LinearLayout>
