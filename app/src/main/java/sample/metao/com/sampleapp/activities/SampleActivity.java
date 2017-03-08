@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class SampleActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener
         , SearchView.OnQueryTextListener {
 
-    private static final String END_POINT_ADDRESS = "http://192.168.1.3/website/v5/data.php";
+    private static final String END_POINT_ADDRESS = "http://74.50.59.155:5000/api/search";
     private RecyclerView recycleView;
     private ArrayList<Item> items;
     private String TAG = SampleActivity.class.getSimpleName();
